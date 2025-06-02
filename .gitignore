@@ -1,0 +1,32 @@
+# Node/Vite (quiz-online-client)
+node_modules/
+dist/
+.env
+*.log
+
+# Vite build
+quiz-online-client/coverage/
+quiz-online-client/dist/
+quiz-online-client/node_modules/
+quiz-online-client/.env*
+quiz-online-client/.DS_Store
+quiz-online-client/.vscode/
+
+# Java/Maven (quiz-online-server)
+target/
+*.class
+*.jar
+*.war
+*.iml
+.idea/
+*.log
+
+# OS/Editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Misc
+*.bak
+*.tmp
