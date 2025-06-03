@@ -84,8 +84,8 @@ function QuestionList() {
                             key={question.questionId}
                             title={`Question ${index + 1}: ${question.questionText}`}
                             actions={[
-                                <Link key="edit" to={`/questions/${question.questionId}/edit`}>
-                                    <EditOutlined/> Edit
+                               <Link key="edit" to={`/quizzes/${quizId}/questions/${question.questionId}/edit`}>
+                                    <EditOutlined /> Edit
                                 </Link>,
                                 <Popconfirm
                                     key="delete"

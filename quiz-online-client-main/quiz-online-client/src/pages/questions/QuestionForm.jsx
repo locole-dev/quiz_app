@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import  {useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import {Button, Form, Input, message, Space, Spin} from 'antd';
 import QuestionService from "../../service/questionService.js";
@@ -37,6 +37,7 @@ function QuestionForm() {
         setLoading(true);
         try {
             const questionDataToSend = {
+                questionId : id ? Number(id) : undefined,
                 quizId: Number(quizId),
                 questionText: values.questionText,
                 options: {
@@ -47,7 +48,7 @@ function QuestionForm() {
                 },
                 correctAnswer: values.correctAnswer,
             };
-
+            console.log(id)
             if (id) {
                 await QuestionService.updateQuestion(id, questionDataToSend);
                 message.success('Question updated successfully!');

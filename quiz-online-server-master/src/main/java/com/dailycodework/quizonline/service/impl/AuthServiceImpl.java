@@ -61,15 +61,15 @@ public class AuthServiceImpl implements AuthService {
         account.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
         account.setVerificationToken(UUID.randomUUID().toString());
         account.setTokenExpiryDate(LocalDateTime.now().plusHours(24));
-        account.setEnabled(false);
+        account.setEnabled(true);
         if (registerRequest.getRole() == null || registerRequest.getRole().isEmpty()) {
             account.setRole("USER");
         } else {
             account.setRole(registerRequest.getRole().toUpperCase());
         }
         Account savedAccount = accountRepository.save(account);
-        String verificationLink = "http://localhost:5173/verify-email?token=" + savedAccount.getVerificationToken();
-        emailService.sendVerificationEmail(savedAccount.getEmail(), verificationLink);
+//        String verificationLink = "http://localhost:5173/verify-email?token=" + savedAccount.getVerificationToken();
+//        emailService.sendVerificationEmail(savedAccount.getEmail(), verificationLink);
 
         return savedAccount;
     }

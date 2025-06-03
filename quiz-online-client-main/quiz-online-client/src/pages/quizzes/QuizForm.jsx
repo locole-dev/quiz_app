@@ -118,7 +118,7 @@ function QuizForm() {
                             <Button type="primary" htmlType="submit">
                                 {id ? 'Update Quiz' : 'Create Quiz'}
                             </Button>
-                            <Button onClick={() => navigate('/admin/quizzes')}>Cancel</Button>
+                            <Button onClick={() => navigate('/quizzes')}>Cancel</Button>
                         </Space>
                     </Form.Item>
                 </Form>
