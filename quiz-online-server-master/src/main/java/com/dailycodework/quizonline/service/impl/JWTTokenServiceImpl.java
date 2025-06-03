@@ -62,7 +62,17 @@ public class JWTTokenServiceImpl implements JWTTokenService {
                     .getBody()
                     .getSubject();
             Account user = userService.getAccountByUsername(username);
-            return username != null ? new UsernamePasswordAuthenticationToken(user.getUsername(), null, AuthorityUtils.createAuthorityList(user.getRole().toString())) : null;
+            String roleName = user.getRole().toString();
+
+            // Đảm bảo vai trò có tiền tố "ROLE_" và chữ HOA
+            String prefixedRole = "ROLE_" + roleName.toUpperCase(); // Rất quan trọng
+
+            // Tạo UsernamePasswordAuthenticationToken với vai trò đã có tiền tố
+            return new UsernamePasswordAuthenticationToken(
+                    user.getUsername(), // Principal
+                    null,              // Credentials (thường là null sau khi xác thực JWT)
+                    AuthorityUtils.createAuthorityList(prefixedRole));
+           // return username != null ? new UsernamePasswordAuthenticationToken(user.getUsername(), null, AuthorityUtils.createAuthorityList(user.getRole().toString())) : null;
         } catch (Exception e) {
             return null;
         }
